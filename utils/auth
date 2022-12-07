@@ -1,4 +1,10 @@
-//middleware
+//middleware to verify login
 const withAuth = (req, res, next) => {
-    if
+    if (!req.session.user_id) {
+    res.redirect('/login');
+} else {
+    next();
 }
+};
+
+module.exports = withAuth;
